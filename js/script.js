@@ -67,15 +67,31 @@ const team = [
 // </div>
 
 //functions
-function templateCard(obj) {
+// function templateCard(obj) {
+//   const template = `
+//     <div class="team-card">
+//       <div class="card-image">
+//         <img src="img/${obj.image}" alt="${obj.name}" />
+//       </div>
+//       <div class="card-text">
+//         <h3>${obj.name}</h3>
+//         <p>${obj.role}</p>
+//       </div>
+//     </div>
+//   `;
+
+//   return template
+// }
+
+function templateCard({ image, name, role }) {
   const template = `
     <div class="team-card">
       <div class="card-image">
-        <img src="img/${obj.image}" alt="${obj.name}" />
+        <img src="img/${image}" alt="${name}" />
       </div>
       <div class="card-text">
-        <h3>${obj.name}</h3>
-        <p>${obj.role}</p>
+        <h3>${name}</h3>
+        <p>${role}</p>
       </div>
     </div>
   `;
@@ -83,25 +99,19 @@ function templateCard(obj) {
   return template
 }
 
-const container = document.querySelector('.team-container');
 
-for (let index = 0; index < team.length; index++) {
-  const member = team[index]; //obj 
-  const template = `
-    <div class="team-card">
-      <div class="card-image">
-        <img src="img/${member.image}" alt="${member.name}" />
-      </div>
-      <div class="card-text">
-        <h3>${member.name}</h3>
-        <p>${member.role}</p>
-      </div>
-    </div>
-  `;
+function init() {
+  for (let index = 0; index < team.length; index++) {
+    const member = team[index]; //obj 
+    const template = templateCard(member);
+    console.log(template);
 
-  container.innerHTML += template;
+    container.innerHTML += template;
+  }
 }
 
+//var global
+const container = document.querySelector('.team-container');
 const inputName = document.getElementById('name');
 const inputRole = document.getElementById('role');
 const inputImage = document.getElementById('image');
@@ -112,32 +122,72 @@ button.addEventListener('click', function () {
   const role = inputRole.value;
   const image = inputImage.value;
 
+  // const obj = {
+  //   name: name,
+  //   role: role,
+  //   image: image
+  // }
+
   const obj = {
-    name: name,
-    role: role,
-    image: image
+    name,
+    role,
+    image
   }
 
   team.push(obj);
 
-  const template = `
-    <div class="team-card">
-      <div class="card-image">
-        <img src="img/${obj.image}" alt="${obj.name}" />
-      </div>
-      <div class="card-text">
-        <h3>${obj.name}</h3>
-        <p>${obj.role}</p>
-      </div>
-    </div>
-  `;
+  const template = templateCard(obj);
 
   container.innerHTML += template;
-  console.log(obj);
 });
 
+init();
 
-//Funzioni
 
 
-//Init
+// let name = 'Paolo';
+// let ageValue = 30;
+// let email = 'paolo@email.it';
+
+// const nameKey = 'age';
+
+// const students = {
+//   name: name,
+//   [nameKey]: ageValue,
+//   email: email
+// };
+
+// console.log(students);
+
+// const keys = [
+//   'peso',
+//   'altezza',
+//   'eta'
+// ];
+
+// const objD = {};
+// for (let i = 0; i < keys.length; i++) {
+//   const key = keys[i];
+//   objD[key] = 'a';
+
+//   const obj = {
+//     [key]: 'a'
+//   }
+//   console.log(obj);
+// }
+
+// console.log(objD);
+
+const objDest = {
+  name: 'Pippo',
+  age: '50',
+  email: 'pippo@gmail.com'
+}
+
+// const name = objDest.name;
+// const age = objDest.age;
+// const email = objDest.email;
+
+// const [pippo, pluto, ,] = arr;
+const { name, age, email } = objDest;
+console.log(name, age, email);
