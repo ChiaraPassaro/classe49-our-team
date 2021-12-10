@@ -178,16 +178,57 @@ init();
 
 // console.log(objD);
 
-const objDest = {
-  name: 'Pippo',
-  age: '50',
-  email: 'pippo@gmail.com'
+// const objDest = {
+//   name: 'Pippo',
+//   age: '50',
+//   email: 'pippo@gmail.com'
+// }
+
+// // const name = objDest.name;
+// // const age = objDest.age;
+// // const email = objDest.email;
+
+// // const [pippo, pluto, ,] = arr;
+// const { name, age, email } = objDest;
+// console.log(name, age, email);
+
+
+
+function myFunction(...myArguments) {
+  console.log(myArguments);
+
 }
 
-// const name = objDest.name;
-// const age = objDest.age;
-// const email = objDest.email;
+// function myFunction(arg1, arg2, arg3) {
 
-// const [pippo, pluto, ,] = arr;
-const { name, age, email } = objDest;
-console.log(name, age, email);
+// }
+
+
+
+myFunction('uno', 3, { name: 'pippo' }, 4);
+
+
+const obj = {
+  name: 'palla',
+  peso: 50
+};
+
+const copyObj = {
+  ...obj,
+  colore: 'blue'
+};
+console.log(copyObj);
+
+function sum(...nums) {
+  let sum = 0;
+  for (let i = 0; i < nums.length; i++) {
+    const num = nums[i];
+    sum += num;
+  }
+  return sum;
+}
+
+const summ1 = sum(1, 2, 3);
+const summ2 = sum(1, 2, 3, 60, 50, 100);
+const summ3 = sum(1, 6);
+console.log(summ1, summ2, sum3);
